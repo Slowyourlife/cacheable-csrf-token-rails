@@ -32,7 +32,7 @@ module CacheableCsrfTokenRails
     end
 
     def csrf_token(env)
-      (env['rack.session'] || {}).fetch(SessionField, nil)
+      (env['rack.session'] || {})[SessionField] || nil
     end
 
     def ensure_session_has_csrf_token(env)
